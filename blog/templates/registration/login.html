@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<script type="text/javascript" src="{% static 'jquery.js' %}"></script>
 		<!--<link rel="stylesheet" href="{% static 'css/f.css' %}">#D8E3AB-->
 		<style>
 			#wrapper {position:relative}
@@ -66,8 +67,8 @@
 			<canvas id="q" onmousemove="color_random()">
 			</canvas><!--For Matrix-->
 				<script>
-
-					var width = q.width = screen.width;
+					$(document).ready(function(){
+						var width = q.width = screen.width;
 					var height = q.height = screen.height;
 					var letters = Array(256).join(1).split('');
 
@@ -86,6 +87,7 @@
 					function color_random(){
 					q.getContext('2d').fillStyl = 'red';
 					}
+					})
 				</script>
 		</div>
 	</body>
