@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'yn5b*5nv_h-t(s&#bfs$cz+y)22-0p)srrer1t_am=5xkj6_y9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1','TylerDreden999.pythonanywhere.com']
 
@@ -31,13 +31,15 @@ ALLOWED_HOSTS = ['127.0.0.1','TylerDreden999.pythonanywhere.com']
 # Application definition
 
 INSTALLED_APPS = [
+	'rest_framework',
+	'blog',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-	'blog',
+	
 ]
 
 MIDDLEWARE = [
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Barnaul'
 
 USE_I18N = True
 
@@ -120,3 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+LOGIN_REDIRECT_URL = '/'

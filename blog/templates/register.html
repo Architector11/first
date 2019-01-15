@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<html>
+  <head>
+    <title>Регистрация</title>
+	<!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"-->
+	<!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/f.css' %}">
+	<style>
+		header h2 {color:darkorange;text-shadow: 1px 1px 2px black, 0 0 1em red}
+		body{background:linear-gradient(0deg,black,gray);color:white}
+		header{background:linear-gradient(0deg,black,gray);margin-bottom:30;box-shadow:3px 5px 3px 0px white}
+		.row{margin-bottom:10}
+		
+	</style>
+	<script type="text/javascript" src="{% static 'jquery.js' %}"></script>
+	<script>
+		$(document).ready(function(){
+			//header").css({backgroundColor:'darkgrey'});
+			//console.log($("[for=id_username]").html());
+			$("#lname").append($("[for=id_username]"));
+			$("#lpass").append($("[for=id_password1]"));
+			$("#iname").append($("[name=username]"));
+			$("#ipass").append($("[name=password1]"));
+			//$("#text").append($("[name=username]"));
+			$("#text").append($(".helptext"));
+			$("#lpass2").append($("[for=id_password2]"));
+			$("#ipass2").append($("[name=password2]"));
+		})
+	</script>
+  </head>
+  <body>
+	<header>
+		<h2>зарегистрируйтесь и начните использовать наш сервис!</h2>
+	</header>
+	<div class='container'>
+		<div class='row'>
+			<div class='col-3'>
+				<div class='row' id='lname'></div>
+				<div class='row' id='lpass'></div>
+				<div class='row' id='lpass2'></div>
+			</div>
+			<div class='col-2'>
+				<div class='row' id='iname'></div>
+				<div class='row' id='ipass'></div>
+				<div class='row' id='ipass2'></div>
+			</div>
+			
+			<div class='col-7' id='text'></div>
+		</div>
+	</div>
+    <form action="" method="post">
+      {% csrf_token %}
+      <!-- as_p для того, чтобы каждый элемент формы был с новой строки -->
+      {{ form.as_p }}
+      <button class ='btn btn-warning' type="submit" style='margin:20'>Зарегистрироваться</button>
+    </form>
+  </body>
+</html>

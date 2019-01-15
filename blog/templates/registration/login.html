@@ -1,0 +1,92 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+		<!--<link rel="stylesheet" href="{% static 'css/f.css' %}">#D8E3AB-->
+		<style>
+			#wrapper {position:relative}
+			header {
+				width: 100%;
+				background: darkblue;
+				height: 70px;
+				top: 0;
+			}
+			header h1 {color:orange;}
+			/*.bla {width:30%;}*/
+			/*.bla>div#z>#id_username {position:absolute;background-color:#000;top:20;right:0;height:100px}*/
+			#contentA {position:relative;width:30%;float:left;}
+			.bla {float:right;}
+			.bla>#y>#id_password {position:absolute;right:0}
+			.bla>div{color:orange;}
+			.bla>#x{color:darkblue;}
+			#contentB {background-color:orange;float:right;}
+			footer {clear:both;position:relative;}
+			footer>div>p>a {color:orange;}
+			body {background-image:url({% static 'images/back-login.jpg' %})}
+			<img src="{% static 'images/header-bg.png' %}">
+			
+		</style>
+	</head>
+	<body>
+		<header>
+			<div id="test">
+				<h1>вход</h1>
+			</div>
+		</header>
+		<div id="wrapper">
+			<div id="contentA">
+				<form class = "bla" method="post" action="{% url 'login' %}">
+					{% csrf_token %}
+					<div id="z">
+						<td>{{ form.username.label_tag }}</td>
+						<td>{{ form.username }}</td>
+					</div>
+					<div id="y">
+						<td>{{ form.password.label_tag }}</td>
+						<td>{{ form.password }}</td>
+					</div>
+					<div id="x">
+						<input type="submit" value="войти" />
+						<input type="hidden" name="next" value="{{ next }}"/>
+					</div>
+				</form>
+			</div>
+			<div id="contentB">
+				<h1>TEST</h1>
+			</div>
+			<footer>
+				<div>
+					<p><a href="/register/">регистрация</a></p>
+				</div>
+				<div>
+					<p><a href="/">забыли пароль?</a></p>
+				</div>
+			</footer>
+			<canvas id="q" onmousemove="color_random()">
+			</canvas><!--For Matrix-->
+				<script>
+
+					var width = q.width = screen.width;
+					var height = q.height = screen.height;
+					var letters = Array(256).join(1).split('');
+
+					var draw = function () {
+					q.getContext('2d').fillStyle='rgba(0,0,0,.05)';
+					q.getContext('2d').fillRect(0,0,width,height);
+					q.getContext('2d').fillStyle='rgba(0,327,217,' + ( Math.random() * 5 + 0.80 ) + ')';;
+					letters.map(function(y_pos, index){
+					text = String.fromCharCode(65+Math.random()*33);
+					x_pos = index * 10;
+					q.getContext('2d').fillText(text, x_pos, y_pos);
+					letters[index] = (y_pos > 758 + Math.random() * 1e4) ? 0 : y_pos + 10;
+					});
+					};
+					setInterval(draw, 50);
+					function color_random(){
+					q.getContext('2d').fillStyl = 'red';
+					}
+				</script>
+		</div>
+	</body>
+</html>
